@@ -1,0 +1,20 @@
+#lengthOfLongestSubstring #LC-3
+
+def lengthOfLongestSubstring(s):
+    map = {}
+    start = 0
+    length = 0
+    
+    for end in range(len(s)):
+        c = s[end]
+        if c in map:
+            if start <= map[c]:
+                start = map[c] + 1
+        length = max(length, end - start + 1)
+        map[c] = end
+    
+    print(f"Len: {length}")
+
+# Take input from the user
+s = input("Enter a string: ")
+lengthOfLongestSubstring(s)
